@@ -3,22 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const Navbar = () => {
+    return ( 
+      <nav>
+        <h1>Context App</h1>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    );
+  }
+
+  const BookList = () => {
+    return ( 
+      <div className="book-list">
+        <ul>
+          <li>the way of kings</li>
+          <li>the name of the wind</li>
+          <li>the final empire</li>
+        </ul>
+      </div>
+    );
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <BookList />
     </div>
   );
 }
