@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import ThemeContextProvider from "./ThemeContext";
 import { ThemeContext } from "./ThemeContext";
@@ -45,12 +44,26 @@ function App() {
       </ThemeContext.Consumer>
     );
   };
+
+  const ThemeToggle = () => {
+    return (
+        <ThemeContext.Consumer>
+          {(context) => {
+            const { toggleTheme } = context;
+            return (
+              <button onClick={toggleTheme}>Toggle the theme</button>
+            );
+          }}
+        </ThemeContext.Consumer>
+      );
+ }
   return (
     <div className="App">
       <ThemeContextProvider>
         <Navbar />
         <BookList />
       </ThemeContextProvider>
+      <ThemeToggle />
     </div>
   );
 }
