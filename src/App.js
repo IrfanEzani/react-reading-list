@@ -1,69 +1,17 @@
-import React from "react";
-import "./App.css";
-import ThemeContextProvider from "./ThemeContext";
-import { ThemeContext } from "./ThemeContext";
+import React from 'react';
+import BookList from './components/BookList';
+import Navbar from './components/Navbar';
+import ThemeContextProvider from './contexts/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
-  const Navbar = () => {
-    return (
-      <ThemeContext.Consumer>
-        {(context) => {
-          const { isLightTheme, light, dark } = context;
-          const theme = isLightTheme ? light : dark;
-          return (
-            <nav style={{background : theme.ui, color: theme.syntax}}>
-              <h1>Context App</h1>
-              <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-              </ul>
-            </nav>
-          );
-        }}
-      </ThemeContext.Consumer>
-    );
-  };
-
-  const BookList = () => {
-    return (
-      <ThemeContext.Consumer>
-        {(context) => {
-          const {isLightTheme, dark, light} = context;
-          const theme = isLightTheme ? light : dark;
-          return (
-            <div className="book-list" style={{background: theme.bg, color: theme.syntax}}>
-              <ul>
-                <li style={{background: theme.ui}}>the way of kings</li>
-                <li style={{background: theme.ui}}>the name of the wind</li>
-                <li style={{background: theme.ui}}>the final empire</li>
-              </ul>
-          </div>
-          )
-        }}
-      </ThemeContext.Consumer>
-    );
-  };
-
-  const ThemeToggle = () => {
-    return (
-        <ThemeContext.Consumer>
-          {(context) => {
-            const { toggleTheme } = context;
-            return (
-              <button onClick={toggleTheme}>Toggle the theme</button>
-            );
-          }}
-        </ThemeContext.Consumer>
-      );
- }
   return (
     <div className="App">
       <ThemeContextProvider>
         <Navbar />
         <BookList />
+        <ThemeToggle />
       </ThemeContextProvider>
-      <ThemeToggle />
     </div>
   );
 }
